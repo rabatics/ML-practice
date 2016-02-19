@@ -38,7 +38,7 @@ public class mlclass {
 		double theta0=0;
 		double theta1=0;
 			 int num=0;
-			 double sumnt0=0;
+			 double sumnt0=0,intsum0=0,intsum1=0;
 			 double sumnt1=0;
 			do{
 				 c=costFunction(instances,theta0,theta1);
@@ -49,22 +49,24 @@ public class mlclass {
 				
 			 }
 			
-			 double intsum0=(((double)1/instances.numInstances() )*sumnt0);
+			  intsum0=(((double)1/instances.numInstances() )*sumnt0);
 			 System.out.println(intsum0);
 			 for(int i=1;i<instances.numInstances();i++){
 				 Instance is=instances.instance(i);
 					sumnt1=sumnt1+((( theta0+( theta1*is.value(0) ) )-is.value(1) )*is.value(0) );
 				 }
-			 double intsum1=(((double)1/instances.numInstances())*sumnt1);
+			  intsum1=(((double)1/instances.numInstances())*sumnt1);
 			 theta0 = theta0 -(a*intsum0);
 			 System.out.println(theta0);
 			 theta1 = theta1 -(a*intsum1);
 			 System.out.println(theta1);
 			  c2=costFunction(instances,theta0,theta1);
 			  num++;
-			}while(num<650); 
+			}while(num<1500 || c2<c ); 
 			
 			System.out.println(c+" ----- "+c2);
+			 theta0 = theta0 +(a*intsum0);
+			 theta1 = theta1 +(a*intsum1);
 			System.out.println(theta0+" ----- "+theta1);
 			double newprofit=theta0+ (theta1*15.00);
 			System.out.println("The Profit for a Population of 6.46 Million is :"+newprofit);
