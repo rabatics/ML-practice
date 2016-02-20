@@ -35,7 +35,7 @@ public class mlclass {
 		
 		double c2=0,c=0,a=0.00012;
 		 
-		double theta0=0;
+		double theta0=0;             // h= t0 + t1*x + t2*x*x
 		double theta1=0;
 		double theta2=0;
 			 int num=0;
@@ -87,9 +87,9 @@ public class mlclass {
 			 theta1 = theta1 +(a*intsum1);
 			 theta2 = theta2 +(a*intsum2);
 			System.out.println(theta0+" ----- "+theta1+"------"+theta2);
-			double input=7.00;
+			double input=7;
 			double newprofit=theta0+ (theta1*input) + (theta2*input*input);
-			System.out.println("The Profit for a Population of 6.46 Million is :"+newprofit);
+			System.out.println("The Profit for a Population of "+input+" Million is :"+newprofit);
 		 
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -108,7 +108,7 @@ public class mlclass {
 		for(int i1=1; i1<i.numInstances();i1++){
 			Instance is=i.instance(i1);
 			System.out.println(is.value(0)+" ---- "+is.value(1));
-			double er=(t0+t1*is.value(0) +(t2*is.value(0)*is.value(0)) )-is.value(1);
+			double er=(t0+(t1*is.value(0)) +(t2*is.value(0)*is.value(0)) )-is.value(1);
 			
 		 interm=interm+ (er*er);
 		}
